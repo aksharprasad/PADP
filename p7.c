@@ -26,8 +26,7 @@ void p0_receive_output(int *output1, int *output2) {
         else *output2 = output;
         output_received++;
     }
-    printf("\n Process 1 returned OUTPUT1 = %d\nProcess 2 returned
-OUTPUT2 = %d\n", *output1, *output2) ;
+    printf("\n Process 1 returned OUTPUT1 = %d\nProcess 2 returned OUTPUT2 = %d\n", *output1, *output2) ;
 }
 int p1_receive_input() {
     int id=0, input1, tag=1; MPI_Status status;
@@ -68,9 +67,9 @@ int p2_compute_output(int input2) {
     return output2;
 }
 void p2_send_output(int output2) {
-    int id=0, tag = 4; MPI_Send(&output2, 1, MPI_INT, id, tag,
-MPI_COMM_WORLD) ;
-    }
+    int id=0, tag = 4; MPI_Send(&output2, 1, MPI_INT, id, tag, MPI_COMM_WORLD) ;
+}
+
 void timestamp() {
 #define TIME_SIZE 40
     static char time_buffer[TIME_SIZE] ;
@@ -82,20 +81,18 @@ void timestamp() {
     printf("%s\n", time_buffer) ;
 #undef TIME_SIZE
 }
+
 int main ( int argc, char **argv ) {
     int id, ierr, input1, input2, output1, output2, p;
     double wtime;
     ierr = MPI_Init(&argc, argv) ;
     if ( ierr != 0 ) {
-        printf("\nMPI_MULTITASK - Fatal error!\nMPI_Init returned
-nonzero IERR.\n") ;
+        printf("\nMPI_MULTITASK - Fatal error!\nMPI_Init returned nonzero IERR.\n") ;
         exit(1) ;
     }
-    ierr = MPI_Comm_rank(MPI_COMM_WORLD,
-    &id) ; MPI_Comm_size(MPI_COMM_WORLD, &p) ;
+    ierr = MPI_Comm_rank(MPI_COMM_WORLD,&id) ; MPI_Comm_size(MPI_COMM_WORLD, &p) ;
     if (p < 3) {
-        printf("\nMPI_MULTITASK-Fatal error!\nNumber of available processes
-        must be at least 3!\n" ) ;
+        printf("\nMPI_MULTITASK-Fatal error!\nNumber of available processes must be at least 3!\n" ) ;
         MPI_Finalize() ;
         exit(1) ;
     }
