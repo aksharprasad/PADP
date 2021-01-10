@@ -42,8 +42,7 @@ void ring_io (int p, int id) {
     if (id == 0) {
         printf ("\n Timings based on %d experiments\n", test_num) ;
         printf (" N double precision values were sent\n") ;
-        printf (" in a ring transmission starting and ending at process
-    0\n") ;
+        printf (" in a ring transmission starting and ending at process 0\n") ;
         printf (" and using a total of %d processes.\n", p) ;
         printf ("\n") ;
         printf (" \tN \tT min\t T ave\t T max\n") ;

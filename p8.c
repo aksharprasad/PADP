@@ -46,8 +46,7 @@ If necessary, we adjust N to be divisible by the number of processes.*/
         printf ("\n") ;
         printf (" A = %f\n", a) ; printf (" B = %f\n", b) ;
         printf (" N = %d\n", n) ; printf (" EXACT = %24.16f\n", exact) ;
-        printf (" Use MPI to divide the computation among\nmultiple
-        processors") ;
+        printf (" Use MPI to divide the computation among\nmultiple processors") ;
     }
     source = master;
     MPI_Bcast (&my_n, 1, MPI_INT, source, MPI_COMM_WORLD) ;
